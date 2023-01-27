@@ -11,20 +11,16 @@ const auth = "Client token here";
 
 Array.isArray(auth) ? (async () => {
     for (var i = 0; i < auth.length; i++) {
-        const bot = new accountCleaner(auth[i]).verifyAuth();
-        bot.then((res) => {
-            if (typeof res !== "undefined" && res.isValid){
-                new accountCleaner(auth[i]).Wipe();
-            } else throw new Error(`Invalid token: ${auth[i]}`)
-        })
+        const bot = new accountCleaner(auth[i]);
+        const res = await bot.verifyAuth();
+        if(res.isValid) console.log("Exist")
+        else throw new Error("Invalid Token")
     }
 })() : (async () => {
-    const bot = new accountCleaner(auth).verifyAuth();
-    bot.then((res) => {
-        if (typeof res !== "undefined" && res.isValid){
-            new accountCleaner(auth).Wipe();
-        } else throw new Error(`Invalid token: ${auth}`)
-    })
+    const bot = new accountCleaner(auth);
+    const res = await bot.verifyAuth();
+    if(res.isValid) console.log("Exist")
+    else throw new Error("Invalid Token")
 })()
 ```
  If you wanna do it to plural accounts just change the value of the auth variable from a string to an array.
