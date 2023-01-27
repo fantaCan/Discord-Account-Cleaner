@@ -5,7 +5,7 @@
 ## How to use
 
 ```javascript
-import accountCleaner from "./src";
+import accountCleaner from "./src.js";
 
 const auth = "Client token here";
 
