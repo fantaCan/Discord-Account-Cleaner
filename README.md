@@ -2,7 +2,7 @@
 * ESM Discord selfbot util
 
 
-### How to use
+## How to use
 
 ```javascript
 import accountCleaner from "./src";
