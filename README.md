@@ -28,7 +28,7 @@ Array.isArray(auth) ? (async () => {
  ## Example: 
  
  ```javascript
- const auth = ["token 1", "Token 2"];
+ const auth = ["token 1", "token 2"];
  ```
 
 ## Updates
