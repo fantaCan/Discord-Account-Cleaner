@@ -7,6 +7,9 @@
 ```javascript
 import accountCleaner from "./src.js";
 
+const auth = "";
+
+
 async function cleanAccount(auth) {
   const bot = new accountCleaner(auth);
   const res = await bot.verifyAuth();
