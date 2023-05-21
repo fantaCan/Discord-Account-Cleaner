@@ -7,21 +7,18 @@
 ```javascript
 import accountCleaner from "./src.js";
 
-const auth = "Client token here";
+async function cleanAccount(auth) {
+  const bot = new accountCleaner(auth);
+  const res = await bot.verifyAuth();
 
-Array.isArray(auth) ? (async () => {
-    for (var i = 0; i < auth.length; i++) {
-        const bot = new accountCleaner(auth[i]);
-        const res = await bot.verifyAuth();
-        if(res.isValid) bot.Wipe();
-        else throw new Error("Invalid Token")
-    }
-})() : (async () => {
-    const bot = new accountCleaner(auth);
-    const res = await bot.verifyAuth();
-    if(res.isValid) bot.Wipe();
-    else throw new Error("Invalid Token")
-})()
+  if (!res.isValid) {
+    throw new Error("Invalid Token");
+  }
+
+  bot.Wipe();
+}
+
+Array.isArray(auth) ? auth.map(cleanAccount) : cleanAccount(auth);
 ```
  If you wanna do it to plural accounts just change the value of the auth variable from a string to an array.
  
